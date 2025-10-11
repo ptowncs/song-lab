@@ -9,6 +9,7 @@ public class Read {
             while(in.hasNext()){
                 System.out.print(in.nextLine());
             }
+            in.close();
         }catch(IOException e){
             System.out.println("File not found");
         }
