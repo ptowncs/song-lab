@@ -53,4 +53,67 @@ public class Read {
         }
         return lowShakeSong;
     }
+    public int songInYear(Song [] array, int year){
+        int num = 0;
+        for(int i = 0; i < 28731; i++){
+            if (array[i].getYear() == year){
+                num+= 1;
+            }
+        }
+        return num;       
+    }
+    public int getGreaterShakeability(Song [] array, double dance){
+        int num = 0;
+        for(int i = 0; i < 28731; i++){
+            if(array[i].getDanceability() > dance){
+                num+=1;
+            }
+        }
+        return num;
+    }
+    public String getLongestLen(Song [] array){
+        String longest = "";
+        for(int i = 0; i <28371; i++){
+            int len = array[i].getLength();
+            if ( len > longest.length()){
+                longest = array[i].getTitle();
+            }
+        }
+        return longest;
+    }
+    public String getLoudest(Song [] array){
+        String loud = "";
+        for(int i = 0; i <28371; i++){
+            double len = array[i].getLoudness();
+            if (len > loud.length()){
+                loud = array[i].getTitle();
+            }
+        }
+        return loud;
+    }
+    public void avObscenityPerDecade(Song [] array){
+        int decade = 1950;
+        for(int i = 0; i < 28371; i++){
+            int avgObscenity = 0;
+            int count = 0;
+            if (array[i].getYear()%decade < 10){
+                count +=1;
+                avgObscenity += array[i].getObscene();
+            }else{
+                decade += 10;
+                continue;
+            }
+            avgObscenity/= count;
+            System.out.print("Avg obscenity in:" + decade +":" + avgObscenity);
+        }
+    }
+    public int getNumArtist(Song [] array, String artist){
+        int num = 0;
+        for(int i = 0; i < 28731; i++){
+            if (array[i].getArtist().contains(artist)){
+                num+=1;
+            }
+        }
+        return num;
+    }
 }
