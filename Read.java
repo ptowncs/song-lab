@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Read {
-    Song [] songs = new Song [28372];
+    Song [] songs = new Song [28371];
     public Song[] readData(){
         try {
             Scanner in = new Scanner(new File("songs 2025-2026.csv"));
@@ -24,7 +24,7 @@ public class Read {
 
                 songs [count] = new Song (artist, title, year, genre, len, audienceShake, obscene, danceability,loudness, topic);
                 
-                System.out.println(count + " " + line);
+                //System.out.println(count + " " + line);
                 count++;
             }
             in.close();
@@ -54,18 +54,18 @@ public class Read {
         }
         return lowShakeSong;
     }
-    public int songInYear(Song [] array, int year){
+    public int songsInYear(Song [] array, int year){
         int num = 0;
-        for(int i = 0; i < 28731; i++){
+        for(int i = 0; i < 28371; i++){
             if (array[i].getYear() == year){
                 num+= 1;
             }
         }
         return num;       
     }
-    public int getGreaterShakeability(Song [] array, double dance){
+    public int getGreatestDanceability(Song [] array, double dance){
         int num = 0;
-        for(int i = 0; i < 28731; i++){
+        for(int i = 0; i < 28371; i++){
             if(array[i].getDanceability() > dance){
                 num+=1;
             }
@@ -92,29 +92,26 @@ public class Read {
         }
         return loud;
     }
-    public void avObscenityPerDecade(Song [] array){
-        int decade = 1950;
+    public void avgObscenityPerDecade(Song [] array){
+        int start_year = 1950;
+        int avgObscenity = 0;
+        int count = 0;
         for(int i = 0; i < 28371; i++){
-            int avgObscenity = 0;
-            int count = 0;
-            if (array[i].getYear()%decade < 10){
-                count +=1;
+            int end_year = start_year + 10;
+            if(array[i].getYear() <= start_year && array[i].getYear() < end_year){
                 avgObscenity += array[i].getObscene();
-            }else{
-                decade += 10;
-                continue;
+                count += 1;
             }
-            avgObscenity/= count;
-            System.out.print("Avg obscenity in:" + decade +":" + avgObscenity);
         }
     }
     public int getNumArtist(Song [] array, String artist){
         int num = 0;
-        for(int i = 0; i < 28731; i++){
+        for(int i = 0; i < 28371; i++){
             if (array[i].getArtist().contains(artist)){
                 num+=1;
             }
         }
         return num;
     }
+    
 }
