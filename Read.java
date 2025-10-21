@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Read {
     Song [] songs = new Song [28372];
-    public void readData(){
+    public Song[] readData(){
         try {
             Scanner in = new Scanner(new File("songs 2025-2026.csv"));
             int count = 0;
@@ -31,6 +31,7 @@ public class Read {
         }catch(IOException e){
             System.out.println("File not found");
         }
+        return songs;
     }
     public String getLongestTitle(Song [] array){
         String longest = "";
