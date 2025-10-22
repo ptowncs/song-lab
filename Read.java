@@ -47,7 +47,7 @@ public class Read {
         double lowShake = 0;
         String lowShakeSong= "";
         for (int i = 0; i < 28371; i++){
-            if (lowShake != 0 || lowShake < array[i].getAudienceShake()){
+            if (lowShake == 0 || array[i].getAudienceShake() < lowShake){
                 lowShake = array[i].getAudienceShake();
                 lowShakeSong = array[i].getTitle();
             }
@@ -73,24 +73,28 @@ public class Read {
         return num;
     }
     public String getLongestLen(Song [] array){
-        String longest = "";
+        String longestSong = "";
+        int longest = 0;
         for(int i = 0; i <28371; i++){
             int len = array[i].getLength();
-            if ( len > longest.length()){
-                longest = array[i].getTitle();
+            if ( len > longest){
+                longest = array[i].getLength();
+                longestSong= array[i].getTitle();
             }
         }
-        return longest;
+        return longestSong;
     }
     public String getLoudest(Song [] array){
-        String loud = "";
+        String loudestSong = "";
+        double loudest = 0;
         for(int i = 0; i <28371; i++){
-            double len = array[i].getLoudness();
-            if (len > loud.length()){
-                loud = array[i].getTitle();
+            double current_loud = array[i].getLoudness();
+            if (current_loud > loudest){
+                loudest = current_loud;
+                loudestSong = array[i].getTitle();
             }
         }
-        return loud;
+        return loudestSong;
     }
     public double avgObscenityPerDecade(Song [] array, int start_year){
         double avgObscenity = 0;
