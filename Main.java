@@ -10,8 +10,16 @@ public class Main {
         System.out.println("Song with longest length: " + r.getLongestLen(mySongs));
         System.out.println("Lowest Shakeability: " + r.getLowShake(mySongs));
         System.out.println("Loudest: " + r.getLoudest(mySongs));
-        r.avgObscenityPerDecade(mySongs);
-        System.out.println("Number Songs with Michael Jackson: " + r.getNumArtist(mySongs, "Michael Jackson"));
-        System.out.println("Number Songs with Michael Jackson: " + r.getNumArtist(mySongs, " Whitney Houston"));
+
+        System.out.println("Avg Obscenity in 1950s: " + r.avgObscenityPerDecade(mySongs, 1950));
+        System.out.println("Avg Obscenity in 1960s: " + r.avgObscenityPerDecade(mySongs, 1960));
+        System.out.println("Avg Obscenity in 1970s: " + r.avgObscenityPerDecade(mySongs, 1970));
+        System.out.println("Avg Obscenity in 1980s: " + r.avgObscenityPerDecade(mySongs, 1980));
+        System.out.println("Avg Obscenity in 1990s: " +r.avgObscenityPerDecade(mySongs, 1990));
+        System.out.println("Avg Obscenity in 2000s: " +r.avgObscenityPerDecade(mySongs, 2000));
+        System.out.println("Avg Obscenity in 2010s: " +r.avgObscenityPerDecade(mySongs, 2010));
+
+        System.out.println("Number Songs with Michael Jackson: " + r.getNumArtist(mySongs, "michael jackson"));
+        System.out.println("Number Songs with Whitney Houston: " + r.getNumArtist(mySongs, "whitney houston"));
     }
 }

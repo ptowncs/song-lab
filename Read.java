@@ -92,17 +92,17 @@ public class Read {
         }
         return loud;
     }
-    public void avgObscenityPerDecade(Song [] array){
-        int start_year = 1950;
-        int avgObscenity = 0;
+    public double avgObscenityPerDecade(Song [] array, int start_year){
+        double avgObscenity = 0;
         int count = 0;
+        int end_year = start_year + 10;
         for(int i = 0; i < 28371; i++){
-            int end_year = start_year + 10;
-            if(array[i].getYear() <= start_year && array[i].getYear() < end_year){
+            if(array[i].getYear() >= start_year && array[i].getYear() < end_year){
                 avgObscenity += array[i].getObscene();
                 count += 1;
             }
         }
+        return avgObscenity/count;
     }
     public int getNumArtist(Song [] array, String artist){
         int num = 0;
